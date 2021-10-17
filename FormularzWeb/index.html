@@ -1,0 +1,333 @@
+  <!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - [UPDATED] How to Get Form Field Data as JSON Using Plain JavaScript</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Lato:300|Open+Sans" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<section class="contact-form">
+  <h1>CRACoV - HHS</h1>
+  <h2>Formularz pacjenta</h2>
+  <p> </p>
+  
+  <form>
+    <div class="input-group">
+      <input id="salutation-k" name="PLEC" type="radio" value="K"/>
+      <label class="inline" for="salutation-k">Kobieta</label>
+      
+      <input id="salutation-m" name="PLEC" type="radio" value="M"/>
+      <label class="inline" for="salutation-m">Mezczyzna</label>
+      
+    </div>
+    
+    <div class="input-group">
+      <label for="WIEK">Wiek</label>
+      <input id="WIEK" name="WIEK" type="text"/>
+    </div>
+
+    <div class="input-group">
+      <label for="PCT">PCT</label>
+      <input id="PCT" name="PCT" type="text"/>
+    </div>
+    
+    <div class="input-group">
+      <label for="CRP">CRP</label>
+      <input id="CRP" name="CRP" type="text"/>
+    </div> 
+
+    <div class="input-group">
+      <label for="DD">D-dimery</label>
+      <input id="DD" name="DD" type="text"/>
+    </div> 
+
+    <div class="input-group">
+      <label for="IL-6">Interleukina-6</label>
+      <input id="IL-6" name="IL-6" type="text"/>
+    </div> 
+    <div class="input-group">
+      <label for="TNHS">Troponina I hs</label>
+      <input id="TNHS" name="TNHS" type="text"/>
+    </div>         
+
+    <div class="input-group">
+      <label for="MLECZ">Mleczany</label>
+      <input id="MLECZ" name="MLECZ" type="text"/>
+    </div>    
+    <div class="input-group">
+      <label for="KREA">Kreatynina</label>
+      <input id="KREA" name="KREA" type="text"/>
+    </div>    
+    <div class="input-group">
+      <label for="WBC">WBC (Leukocyty)</label>
+      <input id="WBC" name="WBC" type="text"/>
+    </div>    
+    <div class="input-group">
+      <label for="PLT">PLT (Płytki krwi)</label>
+      <input id="PLT" name="PLT" type="text"/>
+    </div>    
+    <div class="input-group">
+      <label for="WZROST">Wzrost (cm)</label>
+      <input id="WZROST" name="WZROST" type="text"/>
+    </div>                    
+    <div class="input-group">
+      <label for="MASA_CIALA">Masa ciała (kg)</label>
+      <input id="MASA_CIALA" name="MASA_CIALA" type="text"/>
+    </div>  
+    <div class="input-group">
+      <label for="BMI">Body Mass Index (wyliczony z AMMS) kg/m2</label>
+      <input id="BMI" name="BMI" type="text"/>
+    </div>  
+    <div class="input-group">
+      <label for="RRS">Ciśnienie skurczowe, mmHg</label>
+      <input id="RRS" name="RRS" type="text"/>
+    </div>  
+    <div class="input-group">
+      <label for="RRD">Ciśnienie rozkurczowe, mmHg</label>
+      <input id="RRD" name="RRD" type="text"/>
+    </div>  
+    <div class="input-group">
+      <label for="PO2">Saturacja przy oddychaniu tlenem atmosferycznym (najniższa dostępna wartość w dokumentacji medycznej)</label>
+      <input id="PO2" name="PO2" type="text"/>
+    </div>  
+    <div class="input-group">
+      <label for="ODDECH">Częstość oddechów l/min</label>
+      <input id="ODDECH" name="ODDECH" type="text"/>
+    </div>  
+    <div class="input-group">
+      <label for="AS">Częstość akcji serca, ud/min</label>
+      <input id="AS" name="AS" type="text"/>
+    </div>    
+    
+    <div class="input-group">
+      <p>Nadciśnienie tętnicze</p>
+      <input id="NT-T" name="NT" type="radio" value="1"/>
+      <label class="inline" for="NT-T">Tak</label>
+      <input id="NT-N" name="NT" type="radio" value="0"/>
+      <label class="inline" for="NT-N">Nie</label>
+      <input id="NT-NW" name="NT" type="radio" value="-1"/>
+      <label class="inline" for="NT-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Cukrzyca</p>
+      <input id="DM-T" name="DM" type="radio" value="1"/>
+      <label class="inline" for="DM-T">Tak</label>
+      <input id="DM-N" name="DM" type="radio" value="0"/>
+      <label class="inline" for="DM-N">Nie</label>
+      <input id="DM-NW" name="DM" type="radio" value="-1"/>
+      <label class="inline" for="DM-NW">Nie wiadomo</label>   
+    </div> 
+    
+    <div class="input-group">
+      <p>Astma</p>
+      <input id="ASTMA-T" name="ASTMA" type="radio" value="1"/>
+      <label class="inline" for="ASTMA-T">Tak</label>
+      <input id="ASTMA-N" name="ASTMA" type="radio" value="0"/>
+      <label class="inline" for="ASTMA-N">Nie</label>
+      <input id="ASTMA-NW" name="ASTMA" type="radio" value="-1"/>
+      <label class="inline" for="ASTMA-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Przewlekła obturacyjna choroba płuc</p>
+      <input id="POCHP-T" name="POCHP" type="radio" value="1"/>
+      <label class="inline" for="POCHP-T">Tak</label>
+      <input id="POCHP-N" name="POCHP" type="radio" value="0"/>
+      <label class="inline" for="POCHP-N">Nie</label>
+      <input id="POCHP-NW" name="POCHP" type="radio" value="-1"/>
+      <label class="inline" for="POCHP-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Niewydolność serca</p>
+      <input id="HF-T" name="HF" type="radio" value="1"/>
+      <label class="inline" for="HF-T">Tak</label>
+      <input id="HF-N" name="HF" type="radio" value="0"/>
+      <label class="inline" for="HF-N">Nie</label>
+      <input id="HF-NW" name="HF" type="radio" value="-1"/>
+      <label class="inline" for="HF-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Migotanie przedsionków</p>
+      <input id="AF-T" name="AF" type="radio" value="1"/>
+      <label class="inline" for="AF-T">Tak</label>
+      <input id="AF-N" name="AF" type="radio" value="0"/>
+      <label class="inline" for="AF-N">Nie</label>
+      <input id="AF-NW" name="AF" type="radio" value="-1"/>
+      <label class="inline" for="AF-NW">Nie wiadomo</label>   
+    </div> 
+
+    
+    <div class="input-group">
+      <p>Przebyty udar mózgu</p>
+      <input id="UDAR-T" name="UDAR" type="radio" value="1"/>
+      <label class="inline" for="UDAR-T">Tak</label>
+      <input id="UDAR-N" name="UDAR" type="radio" value="0"/>
+      <label class="inline" for="UDAR-N">Nie</label>
+      <input id="UDAR-NW" name="UDAR" type="radio" value="-1"/>
+      <label class="inline" for="UDAR-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Choroba niedokrwienna serca</p>
+      <input id="CHD-T" name="CHD" type="radio" value="1"/>
+      <label class="inline" for="AF-T">Tak</label>
+      <input id="CHD-N" name="CHD" type="radio" value="0"/>
+      <label class="inline" for="CHD-N">Nie</label>
+      <input id="CHD-NW" name="CHD" type="radio" value="-1"/>
+      <label class="inline" for="CHD-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Przebyty zawał serca</p>
+      <input id="MI-T" name="MI" type="radio" value="1"/>
+      <label class="inline" for="MI-T">Tak</label>
+      <input id="MI-N" name="MI" type="radio" value="0"/>
+      <label class="inline" for="MI-N">Nie</label>
+      <input id="MI-NW" name="NT" type="radio" value="-1"/>
+      <label class="inline" for="MI-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Rozpoznane zapalenie płuc</p>
+      <input id="ZAP_PLUC" name="ZAP_PLUC" type="radio" value="1"/>
+      <label class="inline" for="ZAP_PLUC-T">Tak</label>
+      <input id="ZAP_PLUC-N" name="ZAP_PLUC" type="radio" value="0"/>
+      <label class="inline" for="ZAP_PLUC-N">Nie</label>
+      <input id="ZAP_PLUC-NW" name="ZAP_PLUC" type="radio" value="-1"/>
+      <label class="inline" for="ZAP_PLUC-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Przewlekła choroba nerek</p>
+      <input id="PCHN-T" name="PCHN" type="radio" value="1"/>
+      <label class="inline" for="PCHN-T">Tak</label>
+      <input id="PCHN-N" name="PCHN" type="radio" value="0"/>
+      <label class="inline" for="PCHN-N">Nie</label>
+      <input id="PCHN-NW" name="PCHN" type="radio" value="-1"/>
+      <label class="inline" for="PCHN-NW">Nie wiadomo</label>   
+    </div> 
+
+
+    <div class="input-group">
+      <p>DEKSAMETEZON</p>
+      <input id="DEKSAMETEZON-T" name="DEKSAMETEZON" type="radio" value="1"/>
+      <label class="inline" for="DEKSAMETEZON-T">Tak</label>
+      <input id="DEKSAMETEZON-N" name="DEKSAMETEZON" type="radio" value="0"/>
+      <label class="inline" for="DEKSAMETEZON-N">Nie</label>
+      <input id="DEKSAMETEZON-NW" name="DEKSAMETEZON" type="radio" value="-1"/>
+      <label class="inline" for="DEKSAMETEZON-NW">Nie wiadomo</label>   
+    </div> 
+
+    
+    <div class="input-group">
+      <p>heparyna drobnocząsteczkowa (LMWH)</p>
+      <input id="HDCZ-T" name="HDCZ" type="radio" value="1"/>
+      <label class="inline" for="HDCZ-T">Tak</label>
+      <input id="HDCZ-N" name="HDCZ" type="radio" value="0"/>
+      <label class="inline" for="HDCZ-N">Nie</label>
+      <input id="HDCZ-NW" name="HDCZ" type="radio" value="-1"/>
+      <label class="inline" for="HDCZ-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>B-bloker</p>
+      <input id="BB-T" name="BB" type="radio" value="1"/>
+      <label class="inline" for="BB-T">Tak</label>
+      <input id="BB-N" name="BB" type="radio" value="0"/>
+      <label class="inline" for="BB-N">Nie</label>
+      <input id="BB-NW" name="BB" type="radio" value="-1"/>
+      <label class="inline" for="BB-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>STATYNA</p>
+      <input id="STATYNA-T" name="STATYNA" type="radio" value="1"/>
+      <label class="inline" for="STATYNA-T">Tak</label>
+      <input id="STATYNA-N" name="STATYNA" type="radio" value="0"/>
+      <label class="inline" for="STATYNA-N">Nie</label>
+      <input id="STATYNA-NW" name="STATYNA" type="radio" value="-1"/>
+      <label class="inline" for="STATYNA-NW">Nie wiadomo</label>   
+    </div> 
+    
+   
+
+    <div class="input-group">
+      <p>Kwas salicylowy w dawce mniejszej niz 300 mg</p>
+      <input id="ASA-T" name="ASA" type="radio" value="1"/>
+      <label class="inline" for="ASA-T">Tak</label>
+      <input id="ASA-N" name="ASA" type="radio" value="0"/>
+      <label class="inline" for="ASA-N">Nie</label>
+      <input id="ASA-NW" name="ASA" type="radio" value="-1"/>
+      <label class="inline" for="ASA-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Nowa grupa doustnych leków p/zakrzepowych (dabigatran, apiksaban, rivaroksaban)</p>
+      <input id="NOAC-T" name="NOAC" type="radio" value="1"/>
+      <label class="inline" for="NOAC-T">Tak</label>
+      <input id="NOAC-N" name="NOAC" type="radio" value="0"/>
+      <label class="inline" for="NOAC-N">Nie</label>
+      <input id="NOAC-NW" name="NOAC" type="radio" value="-1"/>
+      <label class="inline" for="NOAC-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Antagonista aldosteronu (mineralokortykosterydy)</p>
+      <input id="MRA-T" name="MRA" type="radio" value="1"/>
+      <label class="inline" for="MRA-T">Tak</label>
+      <input id="MRA-N" name="MRA" type="radio" value="0"/>
+      <label class="inline" for="MRA-N">Nie</label>
+      <input id="MRA-NW" name="MRA" type="radio" value="-1"/>
+      <label class="inline" for="MRA-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>ACE-Inhibitor</p>
+      <input id="ACE-T" name="ACE" type="radio" value="1"/>
+      <label class="inline" for="ACE-T">Tak</label>
+      <input id="ACE-N" name="ACE" type="radio" value="0"/>
+      <label class="inline" for="ACE-N">Nie</label>
+      <input id="ACE-NW" name="ACE" type="radio" value="-1"/>
+      <label class="inline" for="ACE-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>ARB (sartan)</p>
+      <input id="SARTANY-T" name="SARTANY" type="radio" value="1"/>
+      <label class="inline" for="SARTANY-T">Tak</label>
+      <input id="SARTANY-N" name="SARTANY" type="radio" value="0"/>
+      <label class="inline" for="SARTANY-N">Nie</label>
+      <input id="SARTANY-NW" name="SARTANY" type="radio" value="-1"/>
+      <label class="inline" for="SARTANY-NW">Nie wiadomo</label>   
+    </div> 
+
+    <div class="input-group">
+      <p>Bloker kanału Ca</p>
+      <input id="CA_BLOKER-T" name="CA_BLOKER" type="radio" value="1"/>
+      <label class="inline" for="CA_BLOKER-T">Tak</label>
+      <input id="CA_BLOKER-N" name="CA_BLOKER" type="radio" value="0"/>
+      <label class="inline" for="CA_BLOKER-N">Nie</label>
+      <input id="CA_BLOKER-NW" name="CA_BLOKER" type="radio" value="-1"/>
+      <label class="inline" for="CA_BLOKER-NW">Nie wiadomo</label>   
+    </div> 
+
+
+    <button type="submit">Wyslij</button>
+  </form>
+</section>
+
+<div class="results">
+  <h2>Kod wynikowy JSON</h2>
+  <pre></pre>
+</div>
+<!-- partial -->
+  <script src='./polyfill.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
